@@ -1,10 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 public class TaskManagerContext : DbContext
 {
-    public DbSet<User> Users { get; set; }
-    public DbSet<Task> Tasks { get; set; }
-
-    public TaskManagerContext(DbContextOptions<TaskManagerContext> options) : base(options) { }
+    public TaskManagerContext(DbContextOptions<TaskManagerContext> options) : base(options) {}
+    public DbSet<User>? Users { get; set; }
+    public DbSet<Task>? Tasks { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

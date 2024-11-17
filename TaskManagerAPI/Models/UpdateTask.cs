@@ -1,4 +1,6 @@
-public class Task
+using System;
+
+public class UpdateTask
 {
     public int Id { get; set; }
     public string Title { get; set; } = string.Empty;

@@ -15,6 +15,10 @@ public class UserController : ControllerBase
     [HttpPost("register")]
     public IActionResult Register([FromBody] User user)
     {
+        if (user == null || user.Tasks == null || !user.Tasks.Any())
+    {
+        return BadRequest("Tasks are required.");
+    }
         var result = _authService.Register(user);
         return Ok(result);
     }
@@ -22,7 +26,7 @@ public class UserController : ControllerBase
     [HttpPost("login")]
     public IActionResult Login([FromBody] User user)
     {
-        var token = _authService.Login(user);
+        var token = _authService.Authenticate(user);
         return Ok(new { Token = token });
     }
 }

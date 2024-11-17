@@ -1,1 +1,39 @@
 /TaskManagerApp.sln
+# Build results# Build results
+[Dd]ebug/
+[Rr]elease/
+[Aa]ssets/
+[Bb]in/
+[Oo]bj/
+
+# User secrets
+secrets.json
+
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Docker files
+docker-compose.override.yml
+
+[Dd]ebug/
+[Rr]elease/
+[Aa]ssets/
+[Bb]in/
+[Oo]bj/
+
+# User secrets
+secrets.json
+
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Docker files
+docker-compose.override.yml

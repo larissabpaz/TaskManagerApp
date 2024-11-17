@@ -29,7 +29,7 @@ public static async Task<IResult> Connect(
         jwtOptions,
         userName,
         TimeSpan.FromMinutes(60),
-        new[] { "read_todo", "create_todo" });
+        new[] { "read_taskmanager", "create_taskmanager" });
 
     return Results.Ok(new
     {
@@ -70,7 +70,7 @@ public static async Task<IResult> Connect(
             expires: DateTime.Now.Add(expiration),
             signingCredentials: signingCredentials);
 
-        var rawToken = new JwtSecurityTokenHandler().WriteToken(token);
+        var rawToken = new JwtSecurityTokenHandler().WriteToken(token); 
         return rawToken;
     }
 }
