@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 public class TaskService
 {
     private readonly TaskManagerContext _context;
@@ -10,7 +12,7 @@ public class TaskService
     public async Task<IEnumerable<TaskWithUserDto>> GetUserTasks(int userId)
     {
         return await _context.Tasks
-            .Where(t => t.Id == userId)
+            .Where(t => t.UserId == userId)
             .Select(t => new TaskWithUserDto
             {
                 Id = t.Id,
@@ -23,9 +25,8 @@ public class TaskService
                 UpdatedAt = t.UpdatedAt,
                 User = new UserLoginDto
                 {
-                    Id = t.Id,
-                    Email = t.,
-                    // Username = t.Username
+                    Id = t.User.Id,
+                    Email = t.User.Email
                 }
             })
             .ToListAsync();

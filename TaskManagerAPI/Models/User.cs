@@ -9,8 +9,8 @@ public class User
     public int Id { get; set; }
     public string Email { get; set; } = string.Empty;
     public string Username { get; set; } = string.Empty;
-    public byte[] PasswordHash { get; set; } 
-    public byte[] PasswordSalt { get; set; } 
+    public byte[] PasswordHash { get; set; } = Array.Empty<byte>();
+    public byte[] PasswordSalt { get; set; } = Array.Empty<byte>();
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public RoleEnum Role {get; set;}
     public List<TaskDto> Tasks { get; set; } = new List<TaskDto>();
