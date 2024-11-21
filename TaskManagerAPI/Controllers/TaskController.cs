@@ -12,18 +12,18 @@ public class TasksController : ControllerBase
         {
             _context = context;
         }
-    private static List<Task> tasks = new List<Task>();
+    private static List<TaskDto> tasks = new List<TaskDto>();
     private static int nextId = 1;
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Task>>> GetTasks()
+    public async Task<ActionResult<IEnumerable<TaskDto>>> GetTasks()
     {
         var tasks = await _context.Tasks.ToListAsync();
         return Ok(tasks);
     }
 
     [HttpPost]
-    public async Task<ActionResult<Task>> CreateTask(Task task)
+    public async Task<ActionResult<TaskDto>> CreateTask(TaskDto task)
     {
         _context.Tasks.Add(task);
         await _context.SaveChangesAsync();

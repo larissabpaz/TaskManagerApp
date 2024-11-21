@@ -1,19 +1,19 @@
 public class TodoRepository
     {
-        private readonly List<Task> _todos = new();
+        private readonly List<TaskDto> _todos = new();
         private int _nextId = 1;
 
-        public List<Task> GetAll() => _todos;
+        public List<TaskDto> GetAll() => _todos;
 
-        public Task? GetById(int id) => _todos.FirstOrDefault(todo => todo.Id == id);
+        public TaskDto? GetById(int id) => _todos.FirstOrDefault(todo => todo.Id == id);
 
-        public void Add(Task todo)
+        public void Add(TaskDto todo)
         {
             todo.Id = _nextId++;
             _todos.Add(todo);
         }
 
-        public void Update(Task updatedTodo)
+        public void Update(TaskDto updatedTodo)
         {
             var index = _todos.FindIndex(todo => todo.Id == updatedTodo.Id);
             if (index != -1)
@@ -33,7 +33,7 @@ public class TodoRepository
             }
         }
 
-        public List<Task> GetByStatus(string status)
+        public List<TaskDto> GetByStatus(string status)
         {
             return _todos.Where(todo => todo.Status.Equals(status, StringComparison.OrdinalIgnoreCase)).ToList();
         }

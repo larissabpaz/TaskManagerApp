@@ -13,5 +13,5 @@ public class User
     public byte[] PasswordSalt { get; set; } 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public RoleEnum Role {get; set;}
-    public List<Task> Tasks { get; set; } = new List<Task>();
+    public List<TaskDto> Tasks { get; set; } = new List<TaskDto>();
 }
