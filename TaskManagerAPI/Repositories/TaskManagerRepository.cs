@@ -1,41 +1,41 @@
 public class TodoRepository
+{
+    private readonly List<TaskDto> _todos = new();
+    private int _nextId = 1;
+
+    public List<TaskDto> GetAll() => _todos;
+
+    public TaskDto? GetById(string id) => _todos.FirstOrDefault(todo => todo.Id == id);
+
+    public void Add(TaskDto todo)
     {
-        private readonly List<TaskDto> _todos = new();
-        private int _nextId = 1;
+        todo.Id = _nextId.ToString();
+        _nextId++;
+        _todos.Add(todo);
+    }
 
-        public List<TaskDto> GetAll() => _todos;
-
-        public TaskDto? GetById(int id) => _todos.FirstOrDefault(todo => todo.Id == id);
-
-        public void Add(TaskDto todo)
+    public void Update(TaskDto updatedTodo)
+    {
+        var index = _todos.FindIndex(todo => todo.Id == updatedTodo.Id);
+        if (index != -1)
         {
-            todo.Id = _nextId++;
-            _todos.Add(todo);
+            _todos[index] = updatedTodo;
         }
+    }
 
-        public void Update(TaskDto updatedTodo)
+    public void Delete(string id) => _todos.RemoveAll(todo => todo.Id == id);
+
+    public void ChangeStatus(string id, TaskStatus status)
+    {
+        var todo = GetById(id);
+        if (todo != null)
         {
-            var index = _todos.FindIndex(todo => todo.Id == updatedTodo.Id);
-            if (index != -1)
-            {
-                _todos[index] = updatedTodo;
-            }
+            todo.Status = status;
         }
+    }
 
-        public void Delete(int id) => _todos.RemoveAll(todo => todo.Id == id);
-
-        public void ChangeStatus(int id, string status)
-        {
-            var todo = GetById(id);
-            if (todo != null)
-            {
-                todo.Status = status;
-            }
-        }
-
-        public List<TaskDto> GetByStatus(string status)
-        {
-            return _todos.Where(todo => todo.Status.Equals(status, StringComparison.OrdinalIgnoreCase)).ToList();
-        }
+    public List<TaskDto> GetByStatus(TaskStatus status)
+    {
+        return _todos.Where(todo => todo.Status == status).ToList();
+    }
 }
-

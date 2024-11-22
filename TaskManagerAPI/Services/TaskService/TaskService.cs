@@ -15,14 +15,14 @@ public class TaskService
             .Where(t => t.UserId == userId)
             .Select(t => new TaskWithUserDto
             {
-                Id = t.Id,
+                Id = t.Id.ToString(),
                 Title = t.Title,
                 Description = t.Description,
-                IsCompleted = t.IsCompleted,
-                Category = t.Category,
+                Priority = t.Priority,
+                Categories = t.Categories,
                 Status = t.Status,
-                CreatedAt = t.CreatedAt,
-                UpdatedAt = t.UpdatedAt,
+                CreatedAt = t.CreatedAt.ToString("o"),
+                UpdatedAt = t.UpdatedAt.HasValue ? t.UpdatedAt.Value.ToString("o") : null,
                 User = new UserLoginDto
                 {
                     Id = t.User.Id,

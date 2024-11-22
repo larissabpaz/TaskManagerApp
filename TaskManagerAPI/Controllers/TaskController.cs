@@ -37,11 +37,14 @@ public class TasksController : ControllerBase
             .Where(t => t.UserId == user.Id)
             .Select(t => new TaskDto
             {
-                Id = t.Id,
+                Id = t.Id.ToString(),
                 Title = t.Title,
                 Description = t.Description,
-                IsCompleted = t.IsCompleted,
-                Category = t.Category
+                Priority = t.Priority,
+                Categories = t.Categories.ToList(),
+                CreatedAt = t.CreatedAt.ToString("o"),
+                UpdatedAt = t.UpdatedAt.HasValue ? t.UpdatedAt.Value.ToString("o") : null,
+                Status = t.Status,                
             })
             .ToListAsync();
 
@@ -77,11 +80,14 @@ public class TasksController : ControllerBase
 
         return Ok(new TaskDto
         {
-            Id = task.Id,
+            Id = task.Id.ToString(),
             Title = task.Title,
             Description = task.Description,
-            IsCompleted = task.IsCompleted,
-            Category = task.Category
+            Priority = task.Priority,
+            Status = task.Status,
+            Categories = task.Categories.ToList(),
+            CreatedAt = task.CreatedAt.ToString("o"),
+            UpdatedAt = task.UpdatedAt?.ToString("o")
         });
     }
 
@@ -105,9 +111,9 @@ public class TasksController : ControllerBase
         {
             Title = dto.Title,
             Description = dto.Description,
-            Category = dto.Category,
+            Categories = dto.Categories,
             Status = dto.Status,
-            IsCompleted = dto.IsCompleted,
+            Priority = dto.Priority,
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = DateTime.UtcNow,
             UserId = user.Id
@@ -143,8 +149,8 @@ public class TasksController : ControllerBase
 
         task.Title = dto.Title;
         task.Description = dto.Description;
-        task.IsCompleted = dto.IsCompleted;
-        task.Category = dto.Category;
+        task.Priority = dto.Priority;
+        task.Categories = dto.Categories;
         task.UpdatedAt = DateTime.UtcNow;
 
         await _context.SaveChangesAsync();

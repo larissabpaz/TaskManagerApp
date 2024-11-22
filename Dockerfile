@@ -6,15 +6,15 @@ EXPOSE 80
 # Use a imagem do SDK para construir a aplicação
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["TaskManagerAPI.csproj", "./"]
-RUN dotnet restore "TaskManagerAPI.csproj"
+COPY TaskManagerAPI/TaskManagerAPI.csproj ./TaskManagerAPI/
+RUN dotnet restore "TaskManagerAPI/TaskManagerAPI.csproj"
 COPY . .
 WORKDIR "/src"
-RUN dotnet build "TaskManagerAPI.csproj" -c Release -o /app/build
+RUN dotnet build "TaskManagerAPI/TaskManagerAPI.csproj" -c Release -o /app/build
 
 # Publicar a aplicação
 FROM build AS publish
-RUN dotnet publish "TaskManagerAPI.csproj" -c Release -o /app/publish
+RUN dotnet publish "TaskManagerAPI/TaskManagerAPI.csproj" -c Release -o /app/publish
 
 # Criar a imagem final
 FROM base AS final
