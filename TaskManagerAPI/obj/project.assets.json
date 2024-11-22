@@ -3143,11 +3143,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\laris\\source\\repos\\TaskManagerApp\\TaskManagerAPI\\TaskManagerAPI.csproj",
+      "projectUniqueName": "c:\\Users\\laris\\source\\repos\\TaskManagerApp\\TaskManagerAPI\\TaskManagerAPI.csproj",
       "projectName": "TaskManagerAPI",
-      "projectPath": "C:\\Users\\laris\\source\\repos\\TaskManagerApp\\TaskManagerAPI\\TaskManagerAPI.csproj",
+      "projectPath": "c:\\Users\\laris\\source\\repos\\TaskManagerApp\\TaskManagerAPI\\TaskManagerAPI.csproj",
       "packagesPath": "C:\\Users\\laris\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\laris\\source\\repos\\TaskManagerApp\\TaskManagerAPI\\obj\\",
+      "outputPath": "c:\\Users\\laris\\source\\repos\\TaskManagerApp\\TaskManagerAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\laris\\AppData\\Roaming\\NuGet\\NuGet.Config"

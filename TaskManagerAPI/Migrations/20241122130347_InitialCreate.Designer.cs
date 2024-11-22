@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace TaskManagerAPI.Migrations
 {
     [DbContext(typeof(TaskManagerContext))]
-    [Migration("20241122035445_AddPriorityToTask")]
-    partial class AddPriorityToTask
+    [Migration("20241122130347_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
